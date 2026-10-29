@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helmholtz-cp-cubic"
+version = "0.1.0"
+description = "Fixed-composition critical-point discovery and TPD screening with PR and SRK"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.24", "scipy>=1.8", "torch>=2.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+pymcx = ["multicomplex>=0.13.0"]
+plot = ["matplotlib>=3.7"]
+
+[tool.setuptools]
+license-files = ["references/*LICENSE.txt", "references/NOTICE.md"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["HelmholtzCPCubic*"]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-p no:cacheprovider -m 'not slow'"
+markers = ["slow: full critical-point discovery and screening examples"]

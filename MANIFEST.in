@@ -1,0 +1,9 @@
+include README.md
+include README.zh-CN.md
+recursive-include docs *.md
+recursive-include docs *.png
+recursive-include examples *.py
+recursive-include tests *.py
+recursive-include references *.md *.txt
+prune output
+global-exclude *.pyc
